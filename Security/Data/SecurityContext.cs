@@ -12,6 +12,7 @@ public class SecurityContext : IdentityDbContext<User>
 
     protected override void OnModelCreating(ModelBuilder builder)
     {
+        builder.HasDefaultSchema("security");
         base.OnModelCreating(builder);
         // Additional model configuration can go here
     }
