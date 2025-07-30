@@ -19,16 +19,16 @@ public class Mutation
     {
         try
         {
-            if(await securityService.GetUserByNameAsync(username) is not null)
+            if(await securityService.GetUserByName(username) is not null)
             {
-                return new AuthPayload(null, "Username already exists");
+                return new AuthPayload(false,null, "Username already exists");
             }
-            var user = await securityService.CreateUserAsync(username, password);
-            return new AuthPayload(user, "User created successfully");
+            var user = await securityService.CreateUser(username, password);
+            return new AuthPayload(true,user, "User created successfully");
         }
         catch (Exception ex)
         {
-            return new AuthPayload(null, ex.Message);
+            return new AuthPayload(false,null, ex.Message);
         }
     }
 
@@ -37,7 +37,6 @@ public class Mutation
     /// </summary>
     public async Task<AuthPayload> Login(
         [Service] ISecurityService securityService,
-        [Service] SignInManager<User> signInManager,
         string username,
         string password)
     {
@@ -47,15 +46,13 @@ public class Mutation
             var user = await securityService.Login(username, password);
             if(user == null)
             {
-                return new AuthPayload(null, "Invalid username or password");
+                return new AuthPayload(false,null, "Invalid username or password");
             }
-            
-            await signInManager.SignInAsync(user, false);
-            return new AuthPayload(user, "Login successful");
+            return new AuthPayload(true,user, "Login successful");
         }
         catch (Exception ex)
         {
-            return new AuthPayload(null, ex.Message);
+            return new AuthPayload(false,null, ex.Message);
         }
     }
 
@@ -73,13 +70,43 @@ public class Mutation
             if (string.IsNullOrEmpty(userId))
                 return false;
 
-            await securityService.Logout(userId);
+            await securityService.Logout();
             return true;
         }
         catch
         {
             return false;
         }
+    }
+    [Authorize]
+    public async Task<RolePayload> CreateRole(
+        [Service] ISecurityService securityService,
+        string roleName
+    )
+    {
+        var role = await securityService.CreateRole(roleName);
+        return new RolePayload(true, role, "Role created successfully");
+    }
+    [Authorize]
+    public async Task<bool> AssignRole(
+        [Service] ISecurityService securityService,
+        string userId,
+        string role)
+    {
+        var user = await securityService.GetUserById(userId);
+        if (user == null)
+        {
+            throw new InvalidOperationException("User not found.");
+        }
+
+        if (role == null)
+        {
+            throw new InvalidOperationException("Invalid role.");
+        }
+        return true;
+        // Assign the role to the user
+        // This would need to be implemented in your SecurityService
+        // await securityService.AssignRoleToUserAsync(user, role);
     }
 
     /// <summary>

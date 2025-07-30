@@ -4879,11 +4879,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "F:\\Projects\\FarmerMarket\\SecurityService\\Security\\Security.csproj",
+      "projectUniqueName": "F:\\Projects\\FarmerMarket\\SecurityService\\security\\Security.csproj",
       "projectName": "Security",
-      "projectPath": "F:\\Projects\\FarmerMarket\\SecurityService\\Security\\Security.csproj",
+      "projectPath": "F:\\Projects\\FarmerMarket\\SecurityService\\security\\Security.csproj",
       "packagesPath": "C:\\Users\\User\\.nuget\\packages\\",
-      "outputPath": "F:\\Projects\\FarmerMarket\\SecurityService\\Security\\obj\\",
+      "outputPath": "F:\\Projects\\FarmerMarket\\SecurityService\\security\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"

@@ -5,8 +5,7 @@ using Microsoft.AspNetCore.Identity;
 /// Represents a user
 /// </summary>
 public class User : IdentityUser, IEquatable<User>
-{
-
+{   
     public bool Equals(User? other)
     {
         if (other is null) return false;

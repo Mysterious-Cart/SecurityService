@@ -4,7 +4,7 @@ using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
 using Model;
 
-public class SecurityContext : IdentityDbContext<User>
+public class SecurityContext : IdentityDbContext<User, Role, string>
 {
     public SecurityContext(DbContextOptions<SecurityContext> options) : base(options)
     {

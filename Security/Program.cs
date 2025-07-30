@@ -13,11 +13,11 @@ builder.Services.AddDbContextFactory<SecurityContext>(options =>
 );
 
 builder.Services.AddIdentityCore<User>()
-    .AddRoles<IdentityRole>()
+    .AddRoles<Role>()
     .AddEntityFrameworkStores<SecurityContext>()
     .AddUserManager<UserManager<User>>()
     .AddSignInManager<SignInManager<User>>()
-    .AddRoleManager<RoleManager<IdentityRole>>()
+    .AddRoleManager<RoleManager<Role>>()
     .AddDefaultTokenProviders();
 
 builder.Services

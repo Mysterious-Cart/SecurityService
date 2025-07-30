@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "mygGGqcufcs=",
+  "dgSpecHash": "+56GMpsqPQs=",
   "success": true,
-  "projectFilePath": "F:\\Projects\\FarmerMarket\\SecurityService\\Security\\Security.csproj",
+  "projectFilePath": "F:\\Projects\\FarmerMarket\\SecurityService\\security\\Security.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\User\\.nuget\\packages\\chillicream.nitro.app\\28.0.7\\chillicream.nitro.app.28.0.7.nupkg.sha512",
     "C:\\Users\\User\\.nuget\\packages\\greendonut\\15.1.8\\greendonut.15.1.8.nupkg.sha512",
